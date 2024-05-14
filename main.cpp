@@ -363,7 +363,7 @@ int main() {
     */
 
     random_device rd;
-    mt19937 g(rd());
+    mt19937 g(rd()); // mt19937 (mersenne twister engine) is the type of random sorter i am using for these randoms
     shuffle(tWinners.begin(), tWinners.end(), g); 
 
 
