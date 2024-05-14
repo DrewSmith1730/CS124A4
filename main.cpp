@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <random>
 #include "TennisWinners.h"
 
 using namespace std;
@@ -355,7 +356,15 @@ int main() {
     // tennis winners vector
     vector<TennisWinners> tWinners;
     getTennisWinnersFromFile("TennisWins2000.csv", tWinners);
-    random_shuffle(tWinners.begin(), tWinners.end());
+
+    /*
+    Original Line was random_shuffle(tWinners.begin(), tWinners.end()); however random_shuffle has since not only been depricated but altogether removed in c++17
+    link to solution https://stackoverflow.com/questions/45013977/random-shuffle-is-not-a-member-of-std-error
+    */
+
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(tWinners.begin(), tWinners.end(), g); 
 
 
     for(int i = 100; i <= 1000; i+= 100){
